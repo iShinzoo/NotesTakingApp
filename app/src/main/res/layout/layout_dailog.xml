@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:id="@+id/edtTitle"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:hint="  Enter Note Title..."
+        android:textColor="@color/black"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/background_rounded"
+        android:backgroundTint="#F1EAFF"
+        android:textColorHint="#61677A"
+        android:padding="15dp"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/edtContent"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:padding="15dp"
+        android:gravity="top"
+        android:hint="  Enter Content....."
+        android:textColorHint="#61677A"
+        android:textColor="@color/black"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/background_rounded"
+        android:backgroundTint="#F1EAFF"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/btnSaveNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColorHint="#61677A"
+        android:text="Save Note"
+        android:layout_marginBottom="12dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"/>
+
+</LinearLayout>

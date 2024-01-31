@@ -10,7 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.notesapp.db.NoteClass
 
 class NotesAdapter(
-    private val listOfNotes : List<NoteClass>
+    private val listOfNotes : List<NoteClass>,
+    private val clickListner: ClickListner
 ) : RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
 
     class NotesViewHolder(
@@ -34,5 +35,17 @@ class NotesAdapter(
         val currentNote = listOfNotes[position]
         holder.textName.text = currentNote.notename
         holder.textContent.text = currentNote.noteContent
+
+        holder.itemView.setOnClickListener(){
+            clickListner.updateNote(currentNote)
+        }
+        holder.imgDelete.setOnClickListener(){
+            clickListner.deleteNote(currentNote)
+        }
+    }
+
+    interface ClickListner{
+        fun updateNote( note : NoteClass)
+        fun deleteNote( note : NoteClass)
     }
 }
