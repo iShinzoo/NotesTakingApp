@@ -3,6 +3,7 @@ package com.example.notesapp
 import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Window
 import android.widget.Button
 import android.widget.EditText
@@ -35,10 +36,14 @@ class MainActivity : AppCompatActivity() , NotesAdapter.ClickListner{
             openDialog(comingFromFAB = true)
         }
 
-        notesViewModel.getAllNotes().observe(this){
+        notesViewModel.getAllNotesLD().observe(this){
             notesAdapter = NotesAdapter(it,this)
             rv.adapter = notesAdapter
             rv.layoutManager = LinearLayoutManager(this)
+        }
+
+        notesViewModel.allNotesLiveData.observe(this){
+            Log.i("DB_LIST",it.toString())
         }
     }
 

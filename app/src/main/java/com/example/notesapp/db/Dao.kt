@@ -22,5 +22,8 @@ interface Dao {
     fun Delete(note: NoteClass)
 
     @Query("Select * from NotesTable")
-    fun getAllNotes(): LiveData<List<NoteClass>>
+    fun getAllNotesLD(): LiveData<List<NoteClass>>
+
+    @Query("Select * from NotesTable")
+    fun getAllNotes(): List<NoteClass>
 }

@@ -1,5 +1,7 @@
 package com.example.notesapp
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.room.Delete
@@ -12,7 +14,18 @@ import kotlinx.coroutines.launch
 class NotesViewModel(
     private val repo: Repo
 ) : ViewModel(){
-    fun getAllNotes() = repo.getAllNotes()
+
+    val allNotesLiveData = MutableLiveData<List<NoteClass>>()
+    fun getAllNotesLD() = repo.allNotesLD()
+
+    init {
+        getAllNotes()
+    }
+    fun getAllNotes(){
+        viewModelScope.launch(Dispatchers.IO) {
+            allNotesLiveData.postValue(repo.allNotes())
+        }
+    }
 
     fun Insert( note: NoteClass){
         viewModelScope.launch(Dispatchers.IO) {

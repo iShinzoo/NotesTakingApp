@@ -1,6 +1,7 @@
 package com.example.notesapp
 
 
+import androidx.lifecycle.LiveData
 import com.example.notesapp.db.Dao
 import com.example.notesapp.db.NoteClass
 import kotlinx.coroutines.Dispatchers
@@ -9,7 +10,9 @@ import kotlinx.coroutines.launch
 
 class Repo(private var dao: Dao) {
 
-    fun getAllNotes() = dao.getAllNotes()
+    fun allNotesLD() : LiveData<List<NoteClass>> = dao.getAllNotesLD()
+
+    fun allNotes() : List<NoteClass> = dao.getAllNotes()
 
     fun insert( note: NoteClass){
             dao.Insert(note)
